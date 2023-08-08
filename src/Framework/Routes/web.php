@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$routeFiles = glob(base_path('src/*/Infrastructure/Routes/web.php'));
+foreach ($routeFiles as $routeFile) {
+    include $routeFile;
+}

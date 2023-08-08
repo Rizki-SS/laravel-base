@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+$routeFiles = glob(base_path('src/*/Infrastructure/Routes/api.php'));
+foreach ($routeFiles as $routeFile) {
+    include $routeFile;
+}
