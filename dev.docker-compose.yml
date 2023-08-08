@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  app: &app
+    # image: authapi:swoole
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    mem_limit: 512m
+    memswap_limit: 1g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: php artisan octane:start --watch --host=0.0.0.0 --workers=4 --max-requests=250 --quiet
+    ports:
+      - 8000:8000
+    volumes:
+      - "./:/app"
+      - docker/supervisor/ /etc/supervisor/
+
+  # app-worker:
+  #   image: authapi:swoole
+  #   command:  ash -c "supervisord -c /etc/supervisor/supervisord.conf && tail -f /dev/null"
+  #   restart: always
+  #   volumes: 
+  #     - docker/supervisor/ /etc/supervisor/
+  #   ports:
+  #     - "9031:80"
+  #     - "9001:9001"
+
+  # app-taks:
+  #   image: authapi:swoole
+  #   command: php artisan schedule:work --quiet
+  #   restart: always
+
+  app-db:
+    image: postgres:alpine3.18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+       - /mnt/docker/api-auth/db/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
