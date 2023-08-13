@@ -4,9 +4,14 @@ namespace App\Framework\Kernel;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Common\Presentation\CLI\CreateControllerCmd;
 
 class Console extends ConsoleKernel
 {
+    protected $commands = [
+        CreateControllerCmd::class,
+    ];
+
     /**
      * Define the application's command schedule.
      */

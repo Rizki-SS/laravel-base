@@ -14,7 +14,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: php artisan octane:start --watch --host=0.0.0.0 --workers=4 --max-requests=250 --quiet
+    command: php artisan octane:start --watch --host=0.0.0.0 --workers=1 --max-requests=1
     ports:
       - 8000:8000
     volumes:

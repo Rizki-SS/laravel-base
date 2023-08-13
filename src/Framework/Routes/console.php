@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+$routeFiles = glob(base_path('src/*/Infrastructure/Routes/console.php'));
+foreach ($routeFiles as $routeFile) {
+    include $routeFile;
+}

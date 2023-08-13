@@ -168,6 +168,16 @@ return [
         // \App\Framework\Providers\BroadcastServiceProvider::class,
         \App\Framework\Providers\EventServiceProvider::class,
         \App\Framework\Providers\RouteServiceProvider::class,
+
+        /*
+         * Application Domain Provider ...
+        */
+        App\Themes\Application\Provider\ThemeProvider::class,
+
+        /*
+         * Application Event Provider ...
+        */
+        \App\Common\Appilcation\Provider\GlobalEventServiceProvider::class
     ])->toArray(),
 
     /*
