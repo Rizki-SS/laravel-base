@@ -177,7 +177,7 @@ return [
         /*
          * Application Event Provider ...
         */
-        \App\Common\Appilcation\Provider\GlobalEventServiceProvider::class
+        \App\Common\Application\Provider\GlobalEventServiceProvider::class
     ])->toArray(),
 
     /*
