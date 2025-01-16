@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('test7', function (Request $request){
+    return response()->json(['message' => 'API route accessed successfully7']);
+});
+
 Route::get('test6', function (Request $request){
     return response()->json(['message' => 'API route accessed successfully6']);
 });
