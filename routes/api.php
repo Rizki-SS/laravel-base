@@ -34,3 +34,7 @@ Route::get('test3', function (Request $request){
 Route::get('test4', function (Request $request){
     return response()->json(['message' => 'API route accessed successfully4']);
 });
+
+Route::get('test5', function (Request $request){
+    return response()->json(['message' => 'API route accessed successfully5']);
+});
